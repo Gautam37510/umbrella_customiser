@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbrella Customiser</title>
+    <link rel="stylesheet" href="../src/components/App.css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="../src/assets/Blue umbrella.png" width="500px" height="500px" class="image" id="umbrella-image">
+        <span><img class="loader" id="loader" src="../src/assets/loader_icon.svg"></img></span>
+        <span id="logo"> <img width="100px" height="50px" class="logo-image" id="logo-image"></span>
+        <span><img class="loader" id="loader" src="../src/assets/loader_icon.svg"></img></span>
+        <aside>
+            <h1 class="title">Custom Umbrella</h1>
+            <div class="pickers">
+                <p class="color-picker1" id="color-picker-pink" onclick="changeUmbrellaColor(this.id)"></p>
+                <p class="color-picker2" id="color-picker-blue" onclick="changeUmbrellaColor(this.id)"></p>
+                <p class="color-picker3" id="color-picker-yellow" onclick="changeUmbrellaColor(this.id)"></p>
+            </div>
+            <h2 class="margin-bottom5px">Customize your umbrella</h2>
+            <p class="margin-top5px margin-bottom5px">Upload a logo for an instant preview</p>
+            <p class="margin-top5px margin-bottom5px">.png and .jpg files only. Max size is 5MB only</p>
+
+            <input type="file" id="upload-button" accept="image/png,image/jpeg" hidden />
+            <label for="upload-button" id="file-chosen" src="../src/assets/upload_icon.svg"><img
+                    src="../src/assets/upload_icon.svg" height="20" width="40" style="float:left;" />UPLOAD
+                PHOTO</label>
+        </aside>
+
+    </div>
+    <script src="../src/components/index.js" />
+</body>
+
+</html>
