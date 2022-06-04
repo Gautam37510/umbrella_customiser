@@ -1,7 +1,6 @@
 const uploadBtn = document.getElementById('upload-button');
 
 const fileChosen = document.querySelector("#file-chosen")
-const fileChosen2 = document.querySelector("#file-chosen2")
 
 const umbrella = document.getElementById("umbrella-image");
 const logo = document.querySelector("#logo-image")
@@ -9,15 +8,16 @@ let activeColor = "rgb(23, 29, 151)"
 let umbrellaColor = "Blue_umbrella"
 const loader = document.getElementById('loader');
 let html = "";
-let logoFlag = false
-
+let logoFlag = false;
+let reloadFlag= true;
 //   logic for uploading logo
-uploadBtn.addEventListener('change', function () {
+ uploadBtn.addEventListener('change', function () {
     html = ""
     logo.src = ""
     umbrella.src = ""
     umbrella.style.width = 0
     logo.style.width = 0
+    logo.style.height = 0
     loader.style.display = "block"
     const maxAllowedSize = 5 * 1024 * 1024;
     setTimeout(() => {
@@ -35,26 +35,32 @@ uploadBtn.addEventListener('change', function () {
 
         umbrella.style.width = 450
         loader.style.display = "none"
-    }, 2000);
+    }, 1500);
     if (this.files && this.files.length !== 0 && this.files[0].name && this.files[0].size < maxAllowedSize) {
-        html = `<img src="../src/assets/upload_icon.svg"  id="uploadIcon"/>${this.files[0].name}<button id="cancelButton" onclick="cancelUpload()" ;>X</button>`
+        html = `<img src="../src/assets/upload_icon.svg"  id="uploadIcon"/>${this.files[0].name}<button id="cancelButton" onclick="cancelUpload(event)" >X</button>`
         fileChosen.innerHTML = html
+        fileChosen.value=this.files[0].name
         logoFlag = true
         logo.style.display = "block"
     }
+    else{
+        cancelUpload()  
+    }
     fileChosen.style.backgroundColor = activeColor
 })
-
 // function for cancel in upload button
-function cancelUpload() {
+function cancelUpload(event) {
     html = `<img src="../src/assets/upload_icon.svg" id="uploadIcon"/>UPLOAD LOGO`
-    fileChosen.innerHTML = html
-    fileChosen.style.backgroundColor = activeColor
-    logo.src = ""
-    logo.style.display = "none"
-    logoFlag = false
+    fileChosen.innerHTML = html;
+    fileChosen.style.backgroundColor = activeColor;
+    logo.src = "";
+    logo.style.display = "none";
+    logoFlag = false;
+    reloadFlag=false;
+    if(event)
+    event.preventDefault();
+    uploadBtn.value=""
 }
-
 //  function to change umbrella color including logic for loader
 function changeUmbrellaColor(input) {
 
@@ -96,6 +102,5 @@ function changeUmbrellaColor(input) {
         umbrella.src = `../src/assets/${umbrellaColor}.png`
         umbrella.style.width = 450
         loader.style.display = "none"
-    }, 1500);
+    }, 1000);
 }
-

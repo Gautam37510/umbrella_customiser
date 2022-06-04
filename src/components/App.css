@@ -56,6 +56,8 @@
   border-radius: 50%;
   background-color: pink;
   margin-right: 20px;
+  border: 2px solid rgb(243, 145, 145);
+  cursor: pointer;
 }
 
 .title {
@@ -68,6 +70,8 @@
   border-radius: 50%;
   background-color: blue;
   margin-right: 20px;
+  cursor: pointer;
+  border: 2px solid gray;
 }
 
 .color-picker3 {
@@ -76,6 +80,8 @@
   border-radius: 50%;
   background-color: yellow;
   margin-right: 20px;
+  cursor: pointer;
+  border: 2px solid rgb(226, 242, 170);
 }
 
 .pickers {
